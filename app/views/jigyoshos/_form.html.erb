@@ -12,25 +12,25 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :cd %><br>
+    <%= f.label :cd %><span>*</span><br>
     <%= f.text_field :cd %>
   </div>
   <div class="field">
-    <%= f.label :name %><br>
+    <%= f.label :name %><span>*</span><br>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :ryakusho %><br>
+    <%= f.label :ryakusho %><span>*</span><br>
     <%= f.text_field :ryakusho %>
   </div>
+
   <div class="field">
-    <%= f.label :from_ymd %><br>
+    <%= f.label "開設期間" %><span>*</span><br>
     <%= f.number_field :from_ymd %>
-  </div>
-  <div class="field">
-    <%= f.label :to_ymd %><br>
     <%= f.number_field :to_ymd %>
   </div>
+
+
   <div class="field">
     <%= f.label :mail %><br>
     <%= f.text_field :mail %>
@@ -40,8 +40,8 @@
     <%= f.number_field :sort_num %>
   </div>
   <div class="field">
-    <%= f.label :flg %><br>
-    <%= f.number_field :flg %>
+    <%= f.label :flg %><span>*</span><br>
+    <%= f.select :flg,[["1 (表示する)" , 1],["0 (表示しない)", 0]], selected: 1 %>
   </div>
   <div class="actions">
     <%= f.submit %>
