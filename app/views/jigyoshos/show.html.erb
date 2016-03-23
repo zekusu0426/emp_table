@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cd:</strong>
+  <%= @jigyosho.cd %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @jigyosho.name %>
+</p>
+
+<p>
+  <strong>Ryakusho:</strong>
+  <%= @jigyosho.ryakusho %>
+</p>
+
+<p>
+  <strong>From ymd:</strong>
+  <%= @jigyosho.from_ymd %>
+</p>
+
+<p>
+  <strong>To ymd:</strong>
+  <%= @jigyosho.to_ymd %>
+</p>
+
+<p>
+  <strong>Mail:</strong>
+  <%= @jigyosho.mail %>
+</p>
+
+<p>
+  <strong>Sort num:</strong>
+  <%= @jigyosho.sort_num %>
+</p>
+
+<p>
+  <strong>Flg:</strong>
+  <%= @jigyosho.flg %>
+</p>
+
+<%= link_to 'Edit', edit_jigyosho_path(@jigyosho) %> |
+<%= link_to 'Back', jigyoshos_path %>

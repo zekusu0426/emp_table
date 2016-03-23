@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cd: MyString
+  name: MyString
+  ryakusho: MyString
+  from_ymd: 1
+  to_ymd: 1
+  mail: MyString
+  sort_num: 1
+  flg: 1
+
+two:
+  cd: MyString
+  name: MyString
+  ryakusho: MyString
+  from_ymd: 1
+  to_ymd: 1
+  mail: MyString
+  sort_num: 1
+  flg: 1

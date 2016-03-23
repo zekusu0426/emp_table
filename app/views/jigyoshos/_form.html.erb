@@ -1,0 +1,49 @@
+<%= form_for(@jigyosho) do |f| %>
+  <% if @jigyosho.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@jigyosho.errors.count, "error") %> prohibited this jigyosho from being saved:</h2>
+
+      <ul>
+      <% @jigyosho.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :cd %><br>
+    <%= f.text_field :cd %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :ryakusho %><br>
+    <%= f.text_field :ryakusho %>
+  </div>
+  <div class="field">
+    <%= f.label :from_ymd %><br>
+    <%= f.number_field :from_ymd %>
+  </div>
+  <div class="field">
+    <%= f.label :to_ymd %><br>
+    <%= f.number_field :to_ymd %>
+  </div>
+  <div class="field">
+    <%= f.label :mail %><br>
+    <%= f.text_field :mail %>
+  </div>
+  <div class="field">
+    <%= f.label :sort_num %><br>
+    <%= f.number_field :sort_num %>
+  </div>
+  <div class="field">
+    <%= f.label :flg %><br>
+    <%= f.number_field :flg %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
