@@ -10,12 +10,13 @@
 #  to_ymd     :integer
 #  mail       :string(50)
 #  sort_num   :integer
-#  flg        :integer          default(0), not null
+#  flg        :integer          default(1), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
 class Jigyosho < ActiveRecord::Base
+  has_many :users
   attr_accessor :year, :month, :day
   class YmdIsCorrectValidator < ActiveModel::EachValidator
     def validate_each(record, attribute, value)
@@ -57,5 +58,5 @@ class Jigyosho < ActiveRecord::Base
 
   validates :sort_num, length: { in: 1..10 }, allow_blank: true
 
-  validates :flg, presence: true, length: { in: 1..2 }
+  validates :flg, presence: true
 end

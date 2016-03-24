@@ -10,7 +10,7 @@
 #  to_ymd     :integer
 #  mail       :string(50)
 #  sort_num   :integer
-#  flg        :integer          default(0), not null
+#  flg        :integer          default(1), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

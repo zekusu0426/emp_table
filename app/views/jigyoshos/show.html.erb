@@ -40,5 +40,9 @@
   <%= @jigyosho.flg %>
 </p>
 
+<% User.where(jigyosho_id: @jigyosho.cd).each do |user| %>
+  <p>所属者：<%= user.name %></p>
+<% end %>
+
 <%= link_to 'Edit', edit_jigyosho_path(@jigyosho) %> |
 <%= link_to 'Back', jigyoshos_path %>

@@ -9,7 +9,7 @@
 <body>
 <div class="container">
   <ul class="nav nav-tabs">
-     <li role="presentation" class="<%#= active?("users") %>"><a href="<%#= users_path %>">マスターテーブル</a></li>
+     <li role="presentation" class="<%= active?("users") %>"><a href="<%= users_path %>">マスターテーブル</a></li>
      <li role="presentation" class="<%= active?("jigyoshos") %>"><a href="<%= jigyoshos_path %>">事業所テーブル</a></li>
   </ul>
   <%= yield %>

@@ -12,7 +12,7 @@
 
 <p>
   <strong>Jigyosho:</strong>
-  <%= @user.jigyosho_id %>
+  <%= Jigyosho.find_by(cd: @user.jigyosho_id).name %>
 </p>
 
 <p>
