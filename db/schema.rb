@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160323074653) do
+ActiveRecord::Schema.define(version: 20160324074939) do
 
   create_table "jigyoshos", force: :cascade do |t|
     t.string   "cd",         limit: 10,             null: false
@@ -21,9 +21,24 @@ ActiveRecord::Schema.define(version: 20160323074653) do
     t.integer  "to_ymd",     limit: 8
     t.string   "mail",       limit: 50
     t.integer  "sort_num",   limit: 10
-    t.integer  "flg",                   default: 0, null: false
+    t.integer  "flg",                   default: 1, null: false
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "emp_id",      limit: 8,               null: false
+    t.string   "name",                                null: false
+    t.string   "jigyosho_id"
+    t.integer  "birthday",    limit: 8,               null: false
+    t.string   "phone1"
+    t.string   "phone2"
+    t.string   "zip",         limit: 8,               null: false
+    t.string   "address"
+    t.string   "other",       limit: 100
+    t.integer  "flg",                     default: 1, null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
 end

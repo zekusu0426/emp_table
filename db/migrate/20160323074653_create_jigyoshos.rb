@@ -8,7 +8,7 @@ class CreateJigyoshos < ActiveRecord::Migration
       t.integer :to_ymd, limit: 8
       t.string :mail, limit: 50
       t.integer :sort_num , limit: 10
-      t.integer :flg, null: false, default: 0
+      t.integer :flg, null: false, default: 1
 
       t.timestamps null: false
     end
