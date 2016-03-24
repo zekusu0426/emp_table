@@ -21,7 +21,7 @@ class JigyoshosController < ApplicationController
   # GET /jigyoshos
   # GET /jigyoshos.json
   def index
-    @jigyoshos = Jigyosho.all
+    @jigyoshos = Jigyosho.where(flg: 1)
   end
 
   # GET /jigyoshos/1

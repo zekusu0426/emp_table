@@ -2,17 +2,11 @@
 
 <h1>Listing Jigyoshos</h1>
 
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
       <th>会社CD</th>
-      <th>会社名称</th>
       <th>会社略称</th>
-      <th>開設期間</th>
-      <th>開設期間</th>
-      <th>メールアドレス</th>
-      <th>表示順</th>
-      <th>表示フラグ</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -21,13 +15,7 @@
     <% @jigyoshos.each do |jigyosho| %>
       <tr>
         <td><%= jigyosho.cd %></td>
-        <td><%= jigyosho.name %></td>
         <td><%= jigyosho.ryakusho %></td>
-        <td><%= jigyosho.from_ymd %></td>
-        <td><%= jigyosho.to_ymd %></td>
-        <td><%= jigyosho.mail %></td>
-        <td><%= jigyosho.sort_num %></td>
-        <td><%= jigyosho.flg %></td>
         <td><%= link_to 'Show', jigyosho %></td>
         <td><%= link_to 'Edit', edit_jigyosho_path(jigyosho) %></td>
         <td><%= link_to 'Destroy', jigyosho, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -1,4 +1,5 @@
-<%= form_for(@jigyosho) do |f| %>
+
+<%= form_for(@jigyosho, html:{ class: "form-horizontal" })  do |f| %>
   <% if @jigyosho.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@jigyosho.errors.count, "error") %> prohibited this jigyosho from being saved:</h2>
@@ -11,39 +12,71 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :cd %><span>*</span><br>
-    <%= f.text_field :cd %>
+  <div class="form-group">
+    <%= f.label :cd, class: "col-sm-3 control-label" %>
+    <div class="col-sm-3">
+      <%= f.text_field :cd, class: "form-control", required: true, placeholder: "事業所CD" %>
+    </div>
+    <div class="col-md-offset-3 col-sm-6">
+      <p class="help-block">半角数字1~8桁で入力</p>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :name %><span>*</span><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :ryakusho %><span>*</span><br>
-    <%= f.text_field :ryakusho %>
-  </div>
-
-  <div class="field">
-    <%= f.label "開設期間" %><span>*</span><br>
-    <%= f.number_field :from_ymd %>
-    <%= f.number_field :to_ymd %>
+  <div class="form-group">
+    <%= f.label :name, class: "col-sm-3 control-label" %>
+    <div class="col-sm-6">
+      <%= f.text_field :name, class: "form-control", required: true, placeholder: "事業所名" %>
+    </div>
   </div>
 
+  <div class="form-group">
+    <%= f.label :ryakusho, class: "col-sm-3 control-label" %>
+    <div class="col-sm-3">
+      <%= f.text_field :ryakusho, class: "form-control", required: true, placeholder: "事業所の略称" %>
+    </div>
+  </div>
 
-  <div class="field">
-    <%= f.label :mail %><br>
-    <%= f.text_field :mail %>
+  <div class="form-group">
+    <%= f.label "開設期間", class: "col-sm-3 control-label" %>
+    <div class="col-sm-6">
+      <div class="input-group">
+        <%= f.text_field :from_ymd, class: "form-control", size: 8, required: true, placeholder: "開設日 (入力例: 19910422)" %>
+        <span class="input-group-addon">～</span>
+        <%= f.text_field :to_ymd, class: "form-control", size: 8, placeholder: "閉設日 (入力例: 20110211)" %>
+      </div>
+    </div>
+    <div class="col-md-offset-3 col-sm-6">
+      <p class="help-block">開設日、閉設日を半角数字8文字でYYYYMMDD表記で入力してください。(1991年2月28日の例: 19910228)</p>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :sort_num %><br>
-    <%= f.number_field :sort_num %>
+
+  <div class="form-group">
+    <%= f.label :mail, class: "col-sm-3 control-label" %>
+    <div class="col-sm-6">
+      <%= f.text_field :mail, class: "form-control", placeholder: "example@sample.com" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :flg %><span>*</span><br>
-    <%= f.select :flg,[["1 (表示する)" , 1],["0 (表示しない)", 0]], selected: 1 %>
+
+  <div class="form-group">
+    <%= f.label :sort_num, class: "col-sm-3 control-label" %>
+    <div class="col-sm-1">
+      <%= f.text_field :sort_num, class: "form-control", placeholder: "0" %>
+    </div>
+    <div class="col-md-offset-3 col-sm-6">
+      <p class="help-block">小さい数字ほど上位に表示されます。</p>
+    </div>
   </div>
+
+  <div class="form-group">
+    <%= f.label :flg, class: "col-sm-3 control-label" %>
+    <div class="col-sm-2">
+      <%= f.select :flg,[["1 表示する" , 1],["0 表示しない", 0]], { selected: 1 }, { class: "form-control" } %>
+    </div>
+    <div class="col-md-offset-3 col-sm-6">
+      <p class="help-block">0 (表示しない)を選択した場合、テーブルにこのデータは表示されないようになります。</p>
+    </div>
+  </div>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-success" %>
   </div>
 <% end %>
