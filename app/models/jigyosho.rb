@@ -18,6 +18,8 @@
 class Jigyosho < ActiveRecord::Base
   # has_many :users
   self.primary_key = "cd"
+
+  # 日付についてのvalidate
   attr_accessor :year, :month, :day
   class YmdIsCorrectValidator < ActiveModel::EachValidator
     def validate_each(record, attribute, value)
@@ -45,6 +47,19 @@ class Jigyosho < ActiveRecord::Base
     end
   end
 
+  class SortNumIsCorrectValidator < ActiveModel::EachValidator
+    def validate_each(record, attribute, value, jigyoshos)
+      jigyoshos = Jigyosho.pluck :sort_num
+      
+      if jigyoshos.include?(value)
+        value += 1
+        validate_each(record, attribute, value, jigyoshos)
+      else
+        return true
+      end
+    end
+  end
+
   validates :cd, presence: true, uniqueness: true, length: { in: 1..10 }
   
   validates :name, presence: true, length: { in: 1..60 }
@@ -57,7 +72,6 @@ class Jigyosho < ActiveRecord::Base
 
   validates :mail, length: { in: 1..50 }, allow_blank: true
 
-  validates :sort_num, length: { in: 1..10 }, allow_blank: true
-
+  validates :sort_num, length: { in: 1..10 }, sort_num_is_correct: true, allow_blank: true
   validates :flg, presence: true
 end

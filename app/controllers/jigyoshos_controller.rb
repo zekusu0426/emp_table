@@ -21,7 +21,7 @@ class JigyoshosController < ApplicationController
   # GET /jigyoshos
   # GET /jigyoshos.json
   def index
-    @jigyoshos = Jigyosho.where(flg: 1)
+    @jigyoshos = Jigyosho.where(flg: 1).order("sort_num ASC")
   end
 
   # GET /jigyoshos/1

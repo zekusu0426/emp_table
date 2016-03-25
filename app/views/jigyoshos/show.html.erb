@@ -1,69 +1,74 @@
 <% content_for :title do %>
     <%= @jigyosho.name %>の詳細
 <% end %>
-
-<h1><%= @jigyosho.name %>の詳細</h1>
-
+<div class="row">
+  <div class="col-sm-offset-3 col-sm-6">
+    <h1 class="text-center" ><%= @jigyosho.name %>の詳細</h1>
+  </div>
+</div>
 
 <p id="notice"><%= notice %></p>
 
-<table class="table table-bordered">
-<tr>
-  <th>事業所CD</th>
-  <td><%= @jigyosho.cd %></td>
-</tr>
 
-<tr>
-  <th>事業所名</th>
-  <td><%= @jigyosho.name %></td>
-</tr>
+<div class="row">
+  <div class="col-sm-offset-2 col-sm-8">
+    <table class="table table-bordered">
+    <tr>
+      <th>事業所CD</th>
+      <td><%= @jigyosho.cd %></td>
+    </tr>
 
-<tr>
-  <th>事業所略称</th>
-  <td><%= @jigyosho.ryakusho %></td>
-</tr>
+    <tr>
+      <th>事業所名</th>
+      <td><%= @jigyosho.name %></td>
+    </tr>
 
-<tr>
-  <th>開設日</th>
-  <td><%= @jigyosho.from_ymd %></td>
-</tr>
+    <tr>
+      <th>事業所略称</th>
+      <td><%= @jigyosho.ryakusho %></td>
+    </tr>
 
-<tr>
-  <th>閉設日</th>
-  <td><%= @jigyosho.to_ymd %></td>
-</tr>
+    <tr>
+      <th>開設日</th>
+      <td><%= @jigyosho.from_ymd %></td>
+    </tr>
 
-<tr>
-  <th>メールアドレス</th>
-  <td><%= @jigyosho.mail %></td>
-</tr>
+    <tr>
+      <th>閉設日</th>
+      <td><%= @jigyosho.to_ymd %></td>
+    </tr>
 
-<tr>
-  <th>表示優先順位</th>
-  <td><%= @jigyosho.sort_num %></td>
-</tr>
+    <tr>
+      <th>メールアドレス</th>
+      <td><%= @jigyosho.mail %></td>
+    </tr>
 
-<tr>
-  <th>表示フラグ</th>
-  <td><%= @jigyosho.flg %></td>
-</tr>
-<tr>
-  <th>所属社員数</th>
-  <td><%= rowspan = User.where(jigyosho_id: @jigyosho.cd).count %>人</td>
-</tr>
+    <tr>
+      <th>表示優先順位</th>
+      <td><%= @jigyosho.sort_num %></td>
+    </tr>
 
-<tr>
-  <th rowspan="<%= rowspan %>">所属社員一覧表</th>
-  <% User.where(jigyosho_id: @jigyosho.cd).each do |user| %>
-    <td><%= user.emp_id %>：<%= user.name %></td>
-</tr>
-  <tr>
-<% end %>
-</tr>
+    <tr>
+      <th>表示フラグ</th>
+      <td><%= @jigyosho.flg %></td>
+    </tr>
+    <tr>
+      <th>所属社員数</th>
+      <td><%= rowspan = User.where(jigyosho_id: @jigyosho.cd).count %>人</td>
+    </tr>
 
+    <tr>
+      <th rowspan="<%= rowspan %>">所属社員一覧表</th>
+      <% User.where(jigyosho_id: @jigyosho.cd).each do |user| %>
+        <td><%= user.emp_id %>：<%= link_to user.name, user %></td>
+    </tr>
+      <tr>
+    <% end %>
+    </tr>
+    </table>
+  </div>
+</div>
 
-
-</table>
 
 
 

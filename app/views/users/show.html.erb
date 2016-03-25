@@ -3,63 +3,64 @@
 <% end %>
 <div class="row">
   <div class="col-sm-offset-3 col-sm-6">
-    <h1><%= @user.name %>の詳細</h1>
+    <h1 class="text-center" ><%= @user.name %>の詳細</h1>
   </div>
 </div>
 
-<p id="notice"><%= notice %></tr>
+<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-sm-offset-2 col-sm-8">
+    <table class="table table-bordered">
+      <tr>
+        <th>社員CD</th>
+        <td><%= @user.emp_id %></td>
+      </tr>
 
-<table class="table table-bordered">
-  <tr>
-    <th>社員CD</th>
-    <td><%= @user.emp_id %></td>
-  </tr>
+      <tr>
+        <th>社員名称</th>
+        <td><%= @user.name %></td>
+      </tr>
 
-  <tr>
-    <th>社員名称</th>
-    <td><%= @user.name %></td>
-  </tr>
+      <tr>
+        <th>所属事業署名</th>
+        <td><%= Jigyosho.find_by(cd: @user.jigyosho_id).name %> <%= link_to "詳細", jigyosho_path(@user.jigyosho_id) %></td>
+      </tr>
 
-  <tr>
-    <th>所属事業署名</th>
-    <td><%= Jigyosho.find_by(cd: @user.jigyosho_id).name %></td>
-  </tr>
+      <tr>
+        <th>生年月日</th>
+        <td><%= @user.birthday %></td>
+      </tr>
 
-  <tr>
-    <th>生年月日</th>
-    <td><%= @user.birthday %></td>
-  </tr>
+      <tr>
+        <th>電話番号1</th>
+        <td><%= @user.phone1 %></td>
+      </tr>
 
-  <tr>
-    <th>電話番号1</th>
-    <td><%= @user.phone1 %></td>
-  </tr>
+      <tr>
+        <th>電話番号2</th>
+        <td><%= @user.phone2 %></td>
+      </tr>
 
-  <tr>
-    <th>電話番号2</th>
-    <td><%= @user.phone2 %></td>
-  </tr>
+      <tr>
+        <th>郵便番号</th>
+        <td><%= @user.zip %></td>
+      </tr>
 
-  <tr>
-    <th>郵便番号</th>
-    <td><%= @user.zip %></td>
-  </tr>
+      <tr>
+        <th>住所</th>
+        <td><%= @user.address %></td>
+      </tr>
 
-  <tr>
-    <th>住所</th>
-    <td><%= @user.address %></td>
-  </tr>
+      <tr>
+        <th>備考欄</th>
+        <td><%= @user.other %></td>
+      </tr>
 
-  <tr>
-    <th>備考欄</th>
-    <td><%= @user.other %></td>
-  </tr>
+      <tr>
+        <th>表示フラグ</th>
+        <td><%= @user.flg %></td>
+      </tr>
+    </table>
+  </div>
+</div>
 
-  <tr>
-    <th>表示フラグ</th>
-    <td><%= @user.flg %></td>
-  </tr>
-</table>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
