@@ -1,54 +1,57 @@
-<p id="notice"><%= notice %></p>
+<p id="notice"><%= notice %></tr>
 
-<p>
-  <strong>Emp:</strong>
-  <%= @user.emp_id %>
-</p>
+<table class="table table-bordered">
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
 
-<p>
-  <strong>Jigyosho:</strong>
-  <%= Jigyosho.find_by(cd: @user.jigyosho_id).name %>
-</p>
+<tr>
+  <th>Emp:</th>
+  <td><%= @user.emp_id %></td>
+</tr>
 
-<p>
-  <strong>Birthday:</strong>
-  <%= @user.birthday %>
-</p>
+<tr>
+  <th>Name:</th>
+  <td><%= @user.name %></td>
+</tr>
 
-<p>
-  <strong>Phone1:</strong>
-  <%= @user.phone1 %>
-</p>
+<tr>
+  <th>Jigyosho:</th>
+  <td><%= Jigyosho.find_by(cd: @user.jigyosho_id).name %></td>
+</tr>
 
-<p>
-  <strong>Phone2:</strong>
-  <%= @user.phone2 %>
-</p>
+<tr>
+  <th>Birthday:</th>
+  <td><%= @user.birthday %></td>
+</tr>
 
-<p>
-  <strong>Zip:</strong>
-  <%= @user.zip %>
-</p>
+<tr>
+  <th>Phone1:</th>
+  <td><%= @user.phone1 %></td>
+</tr>
 
-<p>
-  <strong>Address:</strong>
-  <%= @user.address %>
-</p>
+<tr>
+  <th>Phone2:</th>
+  <td><%= @user.phone2 %></td>
+</tr>
 
-<p>
-  <strong>Other:</strong>
-  <%= @user.other %>
-</p>
+<tr>
+  <th>Zip:</th>
+  <td><%= @user.zip %></td>
+</tr>
 
-<p>
-  <strong>Flg:</strong>
-  <%= @user.flg %>
-</p>
+<tr>
+  <th>Address:</th>
+  <td><%= @user.address %></td>
+</tr>
+
+<tr>
+  <th>Other:</th>
+  <td><%= @user.other %></td>
+</tr>
+
+<tr>
+  <th>Flg:</th>
+  <td><%= @user.flg %></td>
+</tr>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

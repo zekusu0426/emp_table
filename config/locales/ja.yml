@@ -11,6 +11,17 @@ ja:
         sort_num: "表示順"
         flg: "表示フラグ"
         updated_at: "更新日"
+      user:
+        emp_id: "社員CD"
+        name: "社員名称"
+        jigyosho_id: "事業所CD"
+        birthday: "生年月日"
+        phone1: "電話番号1"
+        phone2: "電話番号2"
+        zip: "郵便番号"
+        address: "住所"
+        other: "備考欄"
+        flg: "表示フラグ"
     errors:
       messages:
         record_invalid: "バリデーションに失敗しました: %{errors}"

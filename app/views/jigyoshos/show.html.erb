@@ -40,8 +40,10 @@
   <%= @jigyosho.flg %>
 </p>
 
+<p>所属者一覧表（test）</p>
+<p>社員CD:社員名称</p>
 <% User.where(jigyosho_id: @jigyosho.cd).each do |user| %>
-  <p>所属者：<%= user.name %></p>
+  <p><%= user.emp_id %>：<%= user.name %></p>
 <% end %>
 
 <%= link_to 'Edit', edit_jigyosho_path(@jigyosho) %> |

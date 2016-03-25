@@ -19,7 +19,7 @@
 
 class User < ActiveRecord::Base
   # Jigyoshoとのリレーショナルデータベース用
-  belongs_to :jigyosho
+  # belongs_to :jigyosho, foreign_key: "cd"
 
   # 社員CDは数字のみ、桁数は1桁から8桁までしか認めない
   VALID_EMP_ID_REGEX = /\A[0-9]{1,8}\Z/i

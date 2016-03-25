@@ -13,7 +13,7 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :cd, class: "col-sm-3 control-label" %>
+    <%= f.label :cd, class: "col-sm-3 control-label required" %>
     <div class="col-sm-3">
       <% if controller.action_name == "edit" %>
         <%= f.text_field :cd, class: "form-control", required: true, placeholder: "事業所CD", disabled: true %>
@@ -27,21 +27,21 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :name, class: "col-sm-3 control-label" %>
+    <%= f.label :name, class: "col-sm-3 control-label required" %>
     <div class="col-sm-6">
       <%= f.text_field :name, class: "form-control", required: true, placeholder: "事業所名" %>
     </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :ryakusho, class: "col-sm-3 control-label" %>
+    <%= f.label :ryakusho, class: "col-sm-3 control-label required" %>
     <div class="col-sm-3">
       <%= f.text_field :ryakusho, class: "form-control", required: true, placeholder: "事業所の略称" %>
     </div>
   </div>
 
   <div class="form-group">
-    <%= f.label "開設期間", class: "col-sm-3 control-label" %>
+    <%= f.label "開設期間", class: "col-sm-3 control-label required" %>
     <div class="col-sm-6">
       <div class="input-group">
         <%= f.text_field :from_ymd, class: "form-control", size: 8, required: true, placeholder: "開設日 (入力例: 19910422)" %>
@@ -50,6 +50,7 @@
       </div>
     </div>
     <div class="col-md-offset-3 col-sm-6">
+      <p class="help-block">開設日のみ必須。</p>
       <p class="help-block">開設日、閉設日を半角数字8文字でYYYYMMDD表記で入力してください。(1991年2月28日の例: 19910228)</p>
     </div>
   </div>

@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :emp_id, class: "col-sm-3 control-label" %>
-    <div class="col-sm-3">
+    <%= f.label :emp_id, class: "col-sm-3 control-label required" %>
+    <div class="col-sm-2">
       <% if controller.action_name == "edit" %>
         <%= f.text_field :emp_id, class: "form-control", required: true, placeholder: "社員CD", disabled: true %>
       <% else %>
@@ -25,43 +25,86 @@
     </div>
   </div>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="form-group">
+    <%= f.label :name, class: "col-sm-3 control-label required" %>
+    <div class="col-sm-4">
+      <%= f.text_field :name, class: "form-control", placeholder: "社員の名前", required: true %>
+    </div>
+    <div class="col-md-offset-3 col-sm-6">
+      <p class="help-block">例：田中　太郎</p>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :jigyosho_id %><br>
-    <%= f.text_field :jigyosho_id %>
+
+  <div class="form-group">
+    <%= f.label :jigyosho_id, class: "col-sm-3 control-label" %>
+    <div class="col-sm-2">
+      <%= f.text_field :jigyosho_id, class: "form-control", placeholder: "事業所ID" %>
+    </div>
+    <div class="col-md-offset-3 col-sm-6">
+      <p class="help-block">所属の事業所CDを入力</p>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :birthday %><br>
-    <%= f.number_field :birthday %>
+
+  <div class="form-group">
+    <%= f.label :birthday, class: "col-sm-3 control-label required" %>
+    <div class="col-sm-3">
+      <%= f.number_field :birthday, class: "form-control", placeholder: "生年月日 (入力例: 19910128)", required: true %>
+    </div>
+    <div class="col-md-offset-3 col-sm-6">
+      <p class="help-block">生年月日を半角数字8文字でYYYYMMDD表記で<strong>必ず入力</strong>してください。(1991年2月28日の例: 19910228)</p>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :phone1 %><br>
-    <%= f.text_field :phone1 %>
+  
+  <div class="form-group">
+    <%= f.label :phone1, class: "col-sm-3 control-label required" %>
+    <div class="col-sm-4">
+      <%= f.text_field :phone1, class: "form-control", placeholder: "普段使う電話番号", required: true %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :phone2 %><br>
-    <%= f.text_field :phone2 %>
+
+  <div class="form-group">
+    <%= f.label :phone2, class: "col-sm-3 control-label" %>
+    <div class="col-sm-4">
+      <%= f.text_field :phone2, class: "form-control", placeholder: "予備電話番号" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :zip %><br>
-    <%= f.text_field :zip %>
+
+  <div class="form-group">
+    <%= f.label :zip, class: "col-sm-3 control-label required" %>
+    <div class="col-sm-2">
+      <%= f.text_field :zip, class: "form-control", placeholder: "入力例: 888-9999", required: true %>
+    </div>
+    <div class="col-md-offset-3 col-sm-6">
+      <p class="help-block">適切な郵便番号を半角数字ハイフン区切り(123-4567)で入力してください。</p>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_field :address %>
+
+  <div class="form-group">
+    <%= f.label :address, class: "col-sm-3 control-label required" %>
+    <div class="col-sm-6">
+      <%= f.text_field :address, class: "form-control", placeholder: "社員の住所", required: true %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :other %><br>
-    <%= f.text_field :other %>
+
+  <div class="form-group">
+    <%= f.label :other, class: "col-sm-3 control-label" %>
+    <div class="col-sm-5">
+      <%= f.text_field :other, class: "form-control", placeholder: "備考欄" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :flg %><br>
-    <%= f.number_field :flg %>
+
+  <div class="form-group">
+    <%= f.label :flg, class: "col-sm-3 control-label" %>
+    <div class="col-sm-2">
+      <%= f.number_field :flg, class: "form-control", placeholder: "0" %>
+    </div>
+    <div class="col-sm-offset-3 col-sm-6">
+      <p class="help-block">0 (表示しない)を選択した場合、テーブルにこのデータは表示されないようになります。</p>
+    </div>
   </div>
+
   <div class="actions">
-    <%= f.submit %>
+  
+    <%= f.submit class: "btn btn-success col-sm-offset-3 col-sm-6" %>
   </div>
 <% end %>
