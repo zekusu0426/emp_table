@@ -1,50 +1,69 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Cd:</strong>
-  <%= @jigyosho.cd %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @jigyosho.name %>
-</p>
-
-<p>
-  <strong>Ryakusho:</strong>
-  <%= @jigyosho.ryakusho %>
-</p>
-
-<p>
-  <strong>From ymd:</strong>
-  <%= @jigyosho.from_ymd %>
-</p>
-
-<p>
-  <strong>To ymd:</strong>
-  <%= @jigyosho.to_ymd %>
-</p>
-
-<p>
-  <strong>Mail:</strong>
-  <%= @jigyosho.mail %>
-</p>
-
-<p>
-  <strong>Sort num:</strong>
-  <%= @jigyosho.sort_num %>
-</p>
-
-<p>
-  <strong>Flg:</strong>
-  <%= @jigyosho.flg %>
-</p>
-
-<p>所属者一覧表（test）</p>
-<p>社員CD:社員名称</p>
-<% User.where(jigyosho_id: @jigyosho.cd).each do |user| %>
-  <p><%= user.emp_id %>：<%= user.name %></p>
+<% content_for :title do %>
+    <%= @jigyosho.name %>の詳細
 <% end %>
 
-<%= link_to 'Edit', edit_jigyosho_path(@jigyosho) %> |
-<%= link_to 'Back', jigyoshos_path %>
+<h1><%= @jigyosho.name %>の詳細</h1>
+
+
+<p id="notice"><%= notice %></p>
+
+<table class="table table-bordered">
+<tr>
+  <th>事業所CD</th>
+  <td><%= @jigyosho.cd %></td>
+</tr>
+
+<tr>
+  <th>事業所名</th>
+  <td><%= @jigyosho.name %></td>
+</tr>
+
+<tr>
+  <th>事業所略称</th>
+  <td><%= @jigyosho.ryakusho %></td>
+</tr>
+
+<tr>
+  <th>開設日</th>
+  <td><%= @jigyosho.from_ymd %></td>
+</tr>
+
+<tr>
+  <th>閉設日</th>
+  <td><%= @jigyosho.to_ymd %></td>
+</tr>
+
+<tr>
+  <th>メールアドレス</th>
+  <td><%= @jigyosho.mail %></td>
+</tr>
+
+<tr>
+  <th>表示優先順位</th>
+  <td><%= @jigyosho.sort_num %></td>
+</tr>
+
+<tr>
+  <th>表示フラグ</th>
+  <td><%= @jigyosho.flg %></td>
+</tr>
+<tr>
+  <th>所属社員数</th>
+  <td><%= rowspan = User.where(jigyosho_id: @jigyosho.cd).count %>人</td>
+</tr>
+
+<tr>
+  <th rowspan="<%= rowspan %>">所属社員一覧表</th>
+  <% User.where(jigyosho_id: @jigyosho.cd).each do |user| %>
+    <td><%= user.emp_id %>：<%= user.name %></td>
+</tr>
+  <tr>
+<% end %>
+</tr>
+
+
+
+</table>
+
+
+

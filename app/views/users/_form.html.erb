@@ -38,17 +38,22 @@
   <div class="form-group">
     <%= f.label :jigyosho_id, class: "col-sm-3 control-label" %>
     <div class="col-sm-2">
-      <%= f.text_field :jigyosho_id, class: "form-control", placeholder: "事業所ID" %>
+      <%= f.text_field :jigyosho_id, class: "form-control", autocomplete: "on", list: "jigyosho", placeholder: "事業所CD" %>
+    <datalist id="jigyosho">
+      <% Jigyosho.all.each do |jigyosho| %>
+        <option value="<%= jigyosho.cd %>"><%= jigyosho.name %></option>
+      <% end %>
+    </detailist>
     </div>
     <div class="col-md-offset-3 col-sm-6">
-      <p class="help-block">所属の事業所CDを入力</p>
+      <p class="help-block">所属の事業所CDを入力,または選択</p>
     </div>
   </div>
 
   <div class="form-group">
     <%= f.label :birthday, class: "col-sm-3 control-label required" %>
     <div class="col-sm-3">
-      <%= f.number_field :birthday, class: "form-control", placeholder: "生年月日 (入力例: 19910128)", required: true %>
+      <%= f.text_field :birthday, class: "form-control", placeholder: "生年月日 (入力例: 19910128)", required: true %>
     </div>
     <div class="col-md-offset-3 col-sm-6">
       <p class="help-block">生年月日を半角数字8文字でYYYYMMDD表記で<strong>必ず入力</strong>してください。(1991年2月28日の例: 19910228)</p>
@@ -89,7 +94,7 @@
   <div class="form-group">
     <%= f.label :other, class: "col-sm-3 control-label" %>
     <div class="col-sm-5">
-      <%= f.text_field :other, class: "form-control", placeholder: "備考欄" %>
+      <%= f.text_area :other, class: "form-control", placeholder: "備考欄" %>
     </div>
   </div>
 

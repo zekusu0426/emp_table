@@ -1,6 +1,14 @@
-<h1>Editing User</h1>
+<% content_for :title do %>
+    <%= @user.name %>の編集
+<% end %>
+
+<div class="row">
+  <div class="col-sm-offset-3 col-sm-6">
+    <h1><%= @user.name %>の編集</h1>
+  </div>
+</div>
 
 <%= render 'form' %>
 
-<%#= link_to 'Show', @user %> |
+<%#= link_to 'Show', @user %>
 <%#= link_to 'Back', users_path %>

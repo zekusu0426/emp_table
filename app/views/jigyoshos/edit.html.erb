@@ -1,6 +1,10 @@
+<% content_for :title do %>
+    <%= @jigyosho.name %>の編集
+<% end %>
+
 <div class="row">
   <div class="col-sm-offset-3 col-sm-6">
-    <h1>Editing Jigyosho</h1>
+    <h1><%= @jigyosho.name %>の編集</h1>
   </div>
 </div>
 <%= render 'form' %>

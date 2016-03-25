@@ -40,4 +40,17 @@ class User < ActiveRecord::Base
   validates :address, presence: true
 
   validates :flg, presence: true
+
+
+
+  # before_destroy :flg_change
+
+  # def flg_change
+  #   self.flg = 0
+  #   self.save
+  #   puts "----------"
+  #   puts self.name
+  #   puts self.flg
+  #   return false
+  # end
 end

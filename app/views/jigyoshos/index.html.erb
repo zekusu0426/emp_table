@@ -1,6 +1,9 @@
-<p id="notice"><%= notice %></p>
+<% content_for :title do %>
+    事業所テーブル
+<% end %>
 
-<h1>Listing Jigyoshos</h1>
+<p id="notice"><%= notice %></p>
+<h1>事業所テーブル</h1>
 
 <table class="table table-hover">
   <thead>
@@ -16,9 +19,9 @@
       <tr>
         <td><%= jigyosho.cd %></td>
         <td><%= jigyosho.ryakusho %></td>
-        <td><%= link_to 'Show', jigyosho %></td>
-        <td><%= link_to 'Edit', edit_jigyosho_path(jigyosho) %></td>
-        <td><%= link_to 'Destroy', jigyosho, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '詳細', jigyosho %></td>
+        <td><%= link_to '編集', edit_jigyosho_path(jigyosho) %></td>
+        <td><%= link_to '削除', jigyosho, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
