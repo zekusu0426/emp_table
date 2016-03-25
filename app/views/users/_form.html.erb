@@ -96,7 +96,7 @@
   <div class="form-group">
     <%= f.label :flg, class: "col-sm-3 control-label" %>
     <div class="col-sm-2">
-      <%= f.number_field :flg, class: "form-control", placeholder: "0" %>
+      <%= f.select :flg,[["1 表示する" , 1],["0 表示しない", 0]], { selected: 1 }, { class: "form-control" } %>
     </div>
     <div class="col-sm-offset-3 col-sm-6">
       <p class="help-block">0 (表示しない)を選択した場合、テーブルにこのデータは表示されないようになります。</p>
