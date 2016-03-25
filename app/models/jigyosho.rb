@@ -17,6 +17,7 @@
 
 class Jigyosho < ActiveRecord::Base
   # has_many :users
+  self.primary_key = "cd"
   attr_accessor :year, :month, :day
   class YmdIsCorrectValidator < ActiveModel::EachValidator
     def validate_each(record, attribute, value)
