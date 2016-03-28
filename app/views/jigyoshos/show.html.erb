@@ -37,16 +37,16 @@
       </td>
     </tr>
 
+    <% unless @jigyosho.to_ymd.blank? %>
     <tr>
       <th>閉設日</th>
       <td>
-          <% unless @jigyosho.to_ymd.blank? %>
           <%= @jigyosho.to_ymd.to_s[0..3] %>年
           <%= @jigyosho.to_ymd.to_s[4..5] %>月
           <%= @jigyosho.to_ymd.to_s[6..7] %>日
-          <% end %>
       </td>
     </tr>
+    <% end %>
 
     <tr>
       <th>メールアドレス</th>

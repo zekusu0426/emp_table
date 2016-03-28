@@ -59,10 +59,12 @@
         <td><%= @user.address %></td>
       </tr>
 
+      <% unless @user.other.blank? %>
       <tr>
         <th>備考欄</th>
         <td><%= @user.other %></td>
       </tr>
+      <% end %>
 
       <tr>
         <th>表示フラグ</th>

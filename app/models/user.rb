@@ -48,4 +48,9 @@ class User < ActiveRecord::Base
   validates :address, presence: true
 
   validates :flg, presence: true
+
+  before_destroy :logical_delete
+
+  def logical_delete
+  end
 end
