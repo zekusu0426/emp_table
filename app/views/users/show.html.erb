@@ -23,12 +23,20 @@
 
       <tr>
         <th>所属事業署名</th>
-        <td><%= Jigyosho.find_by(cd: @user.jigyosho_id).name %> <%= link_to "詳細", jigyosho_path(@user.jigyosho_id) %></td>
+        <td>
+          <% unless @user.jigyosho_id.blank? %>
+            <%= Jigyosho.find_by(cd: @user.jigyosho_id).name %>
+            <%= link_to "詳細", jigyosho_path(@user.jigyosho_id) %>
+          <% end %>
+        </td>
       </tr>
 
       <tr>
         <th>生年月日</th>
-        <td><%= @user.birthday %></td>
+        <td><%= @user.birthday.to_s[0..3] %>年
+            <%= @user.birthday.to_s[4..5] %>月
+            <%= @user.birthday.to_s[6..7] %>日
+        </td>
       </tr>
 
       <tr>

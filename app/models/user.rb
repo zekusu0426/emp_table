@@ -20,6 +20,12 @@
 class User < ActiveRecord::Base
   # Jigyoshoとのリレーショナルデータベース用
   # belongs_to :jigyosho, foreign_key: "cd"
+  def currect_is_jigyosho_id
+    return true if self.jigyosho_id.blank?
+    unless  Jigyosho.pluck(:cd).include?(self.jigyosho_id)
+       errors.add(:jigyosho_id, "存在しない事務所番号です。")
+    end
+  end
 
   # 社員CDは数字のみ、桁数は1桁から8桁までしか認めない
   VALID_EMP_ID_REGEX = /\A[0-9]{1,8}\Z/i
@@ -31,7 +37,9 @@ class User < ActiveRecord::Base
   validates :emp_id, presence: true, uniqueness: true, length: { in: 1..8 }
   validates :name, presence: true
 
-  validates :birthday, presence: true, length: { is: 8}
+  validate :currect_is_jigyosho_id
+# 日付が正しい値が入力されたかを確認します。app/validator/date_validator.rb
+  validates :birthday, presence: true, length: { is: 8}, date: true
 
   validates :phone1, presence: true
 
@@ -40,17 +48,4 @@ class User < ActiveRecord::Base
   validates :address, presence: true
 
   validates :flg, presence: true
-
-
-
-  # before_destroy :flg_change
-
-  # def flg_change
-  #   self.flg = 0
-  #   self.save
-  #   puts "----------"
-  #   puts self.name
-  #   puts self.flg
-  #   return false
-  # end
 end

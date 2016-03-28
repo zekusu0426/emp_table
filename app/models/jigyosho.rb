@@ -18,60 +18,34 @@
 class Jigyosho < ActiveRecord::Base
   # has_many :users
   self.primary_key = "cd"
-
   # 日付についてのvalidate
   attr_accessor :year, :month, :day
-  class YmdIsCorrectValidator < ActiveModel::EachValidator
-    def validate_each(record, attribute, value)
 
-      def year_correct?(year)
-        return ( 1000 <= year ) && ( year <= 2999 )
-      end
-
-      def month_correct?(month)
-        return ( 1 <= month ) && ( month <= 12 )
-      end
-
-      def day_correct?(day)
-        return ( 1 <= day ) && ( day <= 31 )
-      end
-
-      ymd = value.to_s
-      year = ymd[0..3].to_i
-      month = ymd[4..5].to_i
-      day = ymd[6..7].to_i
-
-      unless (year_correct?(year) && month_correct?(month) && day_correct?(day))
-        record.errors[attribute] << I18n.t('errors.messages.invalid')
-      end
+  def convert_sort_num
+    if Jigyosho.where.not(cd: self.cd).pluck(:sort_num).include?(self.sort_num)
+      self.sort_num += 1
+      convert_sort_num 
+    else
+      return true
     end
   end
 
-  class SortNumIsCorrectValidator < ActiveModel::EachValidator
-    def validate_each(record, attribute, value, jigyoshos)
-      jigyoshos = Jigyosho.pluck :sort_num
-      
-      if jigyoshos.include?(value)
-        value += 1
-        validate_each(record, attribute, value, jigyoshos)
-      else
-        return true
-      end
-    end
-  end
+
+
 
   validates :cd, presence: true, uniqueness: true, length: { in: 1..10 }
   
   validates :name, presence: true, length: { in: 1..60 }
 
   validates :ryakusho, presence: true, length: { in: 1..30 }
-
-  validates :from_ymd, presence: true, length: { is: 8 }, ymd_is_correct: true
-
-  validates :to_ymd, length: { is: 8 }, ymd_is_correct: true, allow_blank: true
+  # 日付が正しい値が入力されたかを確認します。app/validator/date_validator.rb
+  validates :from_ymd, presence: true, length: { is: 8 }, date: true
+  validates :to_ymd, length: { is: 8 }, date: true, allow_blank: true
 
   validates :mail, length: { in: 1..50 }, allow_blank: true
 
-  validates :sort_num, length: { in: 1..10 }, sort_num_is_correct: true, allow_blank: true
+  validates :sort_num, length: { in: 1..10 }, allow_blank: true
+  validate  :convert_sort_num
+
   validates :flg, presence: true
 end
