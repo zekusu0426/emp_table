@@ -30,22 +30,43 @@ class Jigyosho < ActiveRecord::Base
     end
   end
 
-
-
-
-  validates :cd, presence: true, uniqueness: true, length: { in: 1..10 }
+  validates :cd,
+            presence: true,
+            uniqueness: true,
+            length: { in: 1..10 }
   
-  validates :name, presence: true, length: { in: 1..60 }
+  validates :name,
+            presence: true,
+            length: { in: 1..60 }
 
-  validates :ryakusho, presence: true, length: { in: 1..30 }
+  validates :ryakusho,
+            presence: true,
+            length: { in: 1..30 }
+
   # 日付が正しい値が入力されたかを確認します。app/validator/date_validator.rb
-  validates :from_ymd, presence: true, length: { is: 8 }, date: true
-  validates :to_ymd, length: { is: 8 }, date: true, allow_blank: true
+  validates :from_ymd,
+            presence: true,
+            length: { is: 8 },
+            format: { with: /\A[a-z0-9]+\z/i },
+            date: true
 
-  validates :mail, length: { in: 1..50 }, allow_blank: true
+  validates :to_ymd,
+            length: { is: 8 },
+            format: { with: /\A[a-z0-9]+\z/i },
+            date: true,
+            allow_blank: true
 
-  validates :sort_num, length: { in: 1..10 }, allow_blank: true
+  validates :mail,
+            length: { in: 1..50 },
+            allow_blank: true
+
+  validates :sort_num,
+            length: { in: 1..10 },
+            allow_blank: true
+
+  # 表示順が重複した場合、アラートせずに＋1します。さらに、＋1して重複した場合は、これを繰り返します。
   validate  :convert_sort_num
 
-  validates :flg, presence: true
+  validates :flg,
+            presence: true
 end

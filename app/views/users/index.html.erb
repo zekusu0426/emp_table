@@ -2,35 +2,38 @@
     社員テーブル
 <% end %>
 
-<h1>社員テーブル</h1>
 
 
-<p id="notice"><%= notice %></p>
 
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th class="col-xs-3">社員CD</th>
-      <th class="col-xs-3">社員名称</th>
-      <th class="col-xs-4">所属事業所</th>
-      <th colspan="3" class="col-xs-2"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10">
+  <h1>社員テーブル</h1>
+  <p id="notice"><u><%= notice %></u></p>
+  <table class="table table-hover">
+    <thead>
       <tr>
-        <td><%= user.emp_id %></td>
-        <td><%= user.name %></td>
-        <td><%= Jigyosho.find_by(cd: user.jigyosho_id).try(:name) %></td>
-        <td><%= link_to '詳細', user %></td>
-        <td><%= link_to '編集', edit_user_path(user) %></td>
-        <td><%#= link_to '削除', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th class="col-xs-1">社員CD</th>
+        <th class="col-xs-2">社員名称</th>
+        <th class="col-xs-2">連絡先</th>
+        <th class="col-xs-3">所属事業所</th>
+        <th class="col-xs-2"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
-
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.emp_id %></td>
+          <td><%= user.name %></td>
+          <td><%= user.phone1 %></td>
+          <td><%= Jigyosho.find_by(cd: user.jigyosho_id).try(:name) %></td>
+          <td><%= link_to '詳細', user, class: "btn btn-default btn-sm" %>
+          <%= link_to '編集', edit_user_path(user), class: "btn btn-default btn-sm" %>
+          <%= link_to '削除', user, method: :delete, class: "btn btn-danger btn-sm", data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  </div>
+</div>
 <%= link_to '社員追加', new_user_path %><br>

@@ -17,6 +17,25 @@
 @import "bootstrap-sprockets";
 @import "honoka";
 
+body{
+  background: #f1f1f1;
+}
+
+h1,.navbar-brand {
+  font-weight: 800;
+}
+
+h1 {
+  padding-top: 20px;
+  padding-bottom: 9px;
+  margin: 10px 0 20px;
+  /*border-bottom: 1px solid #eee;*/
+}
+
+.container{
+  background-color: #fff;
+}
+
 .field_with_errors {
   @extend .has-error;
 }
@@ -38,4 +57,11 @@
     color: #fff;
     font-weight: normal;
     font-size: 90%;
+}
+
+.btn-sm, .btn-group-sm > .btn {
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 6px;
 }

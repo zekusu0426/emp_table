@@ -34,23 +34,32 @@ class User < ActiveRecord::Base
   # 最終的には数字とハイフンのみ
   # VALID_PHONE_REGEX = /\A([0-9]){5,}}\Z/i
 
-  validates :emp_id, presence: true, uniqueness: true, length: { in: 1..8 }
-  validates :name, presence: true
+  validates :emp_id,
+            presence: true,
+            uniqueness: true,
+            length: { in: 1..8 }
+
+  validates :name,
+            presence: true
 
   validate :currect_is_jigyosho_id
+
 # 日付が正しい値が入力されたかを確認します。app/validator/date_validator.rb
-  validates :birthday, presence: true, length: { is: 8}, date: true
+  validates :birthday,
+            presence: true,
+            length: { is: 8},
+            date: true
 
-  validates :phone1, presence: true
+  validates :phone1,
+            presence: true
 
-  validates :zip, presence: true, format: {with: VALID_ZIP_REGEX, message: "正しい郵便番号を入力してください。"}
+  validates :zip,
+            presence: true,
+            format: {with: VALID_ZIP_REGEX, message: "正しい郵便番号を入力してください。"}
 
-  validates :address, presence: true
+  validates :address,
+            presence: true
 
-  validates :flg, presence: true
-
-  before_destroy :logical_delete
-
-  def logical_delete
-  end
+  validates :flg,
+            presence: true
 end
