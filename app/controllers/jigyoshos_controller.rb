@@ -21,7 +21,7 @@ class JigyoshosController < ApplicationController
   # GET /jigyoshos
   # GET /jigyoshos.json
   def index
-    @jigyoshos = Jigyosho.where(flg: 1).order("sort_num ASC")
+    @jigyoshos = Jigyosho.all
   end
 
   # GET /jigyoshos/1
@@ -66,6 +66,13 @@ class JigyoshosController < ApplicationController
         format.json { render json: @jigyosho.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def logical_delete
+    jigyosho = Jigyosho.find(params[:id])
+    jigyosho.flg = 0
+    jigyosho.save
+    redirect_to jigyoshos_path
   end
 
   # DELETE /jigyoshos/1

@@ -21,7 +21,7 @@
         <td><%= jigyosho.ryakusho %></td>
         <td><%= link_to '詳細', jigyosho %></td>
         <td><%= link_to '編集', edit_jigyosho_path(jigyosho) %></td>
-        <td><%= link_to '削除', jigyosho, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '削除' ,logical_delete_jigyosho_path(jigyosho), method: "PATCH", data: { confirm: 'Are you sure?' }%></td>
       </tr>
     <% end %>
   </tbody>

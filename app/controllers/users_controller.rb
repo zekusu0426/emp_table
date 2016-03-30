@@ -18,12 +18,12 @@
 #
 
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :logical_delete]
 
   # GET /users
   # GET /users.json
   def index
-    @users = User.where(flg: 1)
+    @users = User.all
   end
 
   # GET /users/1

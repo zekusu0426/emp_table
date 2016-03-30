@@ -32,11 +32,12 @@ User.delete_all
   User.create(emp_id: "0#{i}",
               name: "test0#{i}",
               jigyosho_id: "0#{rand(1..3)}",
-              birthday: 19910101,
+              birthday: 19910201,
               phone1: "08011112222",
               zip:    "#{rand(100..999)}-#{rand(1000..9999)}",
               address: "福岡県福岡市",
-              flg: 1)
+              flg: 1
+              )
 end
 
 
