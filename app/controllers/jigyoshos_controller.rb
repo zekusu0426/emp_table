@@ -17,12 +17,21 @@
 
 class JigyoshosController < ApplicationController
   before_action :set_jigyosho, only: [:show, :edit, :update, :destroy]
+  helper_method :sort_column, :sort_direction
 
   # GET /jigyoshos
   # GET /jigyoshos.json
   def index
-    @jigyoshos = Jigyosho.all
+    @jigyoshos = Jigyosho.order(sort_column + ' ' + sort_direction)
     # @jigyoshos = Jigyosho.where(flg: 1)
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+
+  def sort_column
+    Jigyosho.column_names.include?(params[:sort]) ? params[:sort] : "sort_num"
   end
 
   # GET /jigyoshos/1
