@@ -22,7 +22,8 @@
         <th>所属事業署名</th>
         <td>
           <% unless @user.jigyosho_id.blank? %>
-            <%= Jigyosho.find_by(cd: @user.jigyosho_id).name %>
+            <%#= Jigyosho.find_by(cd: @user.jigyosho_id).name %>
+            <%= @user.jigyosho.name%>
             <%= link_to "詳細", jigyosho_path(@user.jigyosho_id) %>
           <% end %>
         </td>

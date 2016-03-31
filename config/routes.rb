@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :jigyoshos do
     member do
-      patch 'logical_delete'
+      patch 'logical_destroy'
     end
   end
 

@@ -19,7 +19,7 @@
 
 class User < ActiveRecord::Base
   # Jigyoshoとのリレーショナルデータベース用
-  # belongs_to :jigyosho, foreign_key: "cd"
+  belongs_to :jigyosho
   def currect_is_jigyosho_id
     return true if self.jigyosho_id.blank?
     unless  Jigyosho.pluck(:cd).include?(self.jigyosho_id)

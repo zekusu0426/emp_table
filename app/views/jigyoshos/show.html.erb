@@ -62,12 +62,12 @@
     </tr>
     <tr>
       <th>所属社員数</th>
-      <td><%= rowspan = User.where(jigyosho_id: @jigyosho.cd).count %>人</td>
+      <td><%= rowspan = @jigyosho.users.count %>人</td>
     </tr>
 
     <tr>
       <th rowspan="<%= rowspan %>">所属社員一覧表</th>
-      <% User.where(jigyosho_id: @jigyosho.cd).each do |user| %>
+      <% @jigyosho.users.each do |user| %>
         <td><%= user.emp_id %>：<%= link_to user.name, user %></td>
     </tr>
       <tr>
@@ -76,8 +76,6 @@
     </table>
   </div>
 </div>
-
-<%= link_to '論理削除' ,logical_delete_jigyosho_path(@jigyosho), method: "PATCH" %>
 
 
 

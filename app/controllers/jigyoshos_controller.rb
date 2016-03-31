@@ -22,6 +22,7 @@ class JigyoshosController < ApplicationController
   # GET /jigyoshos.json
   def index
     @jigyoshos = Jigyosho.all
+    # @jigyoshos = Jigyosho.where(flg: 1)
   end
 
   # GET /jigyoshos/1
@@ -68,10 +69,9 @@ class JigyoshosController < ApplicationController
     end
   end
 
-  def logical_delete
+  def logical_destroy
     jigyosho = Jigyosho.find(params[:id])
-    jigyosho.flg = 0
-    jigyosho.save
+    jigyosho.update_flg
     redirect_to jigyoshos_path
   end
 

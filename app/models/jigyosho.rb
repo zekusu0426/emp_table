@@ -16,19 +16,33 @@
 #
 
 class Jigyosho < ActiveRecord::Base
-  # has_many :users
+  has_many :users
   self.primary_key = "cd"
   # 日付についてのvalidate
   attr_accessor :year, :month, :day
 
+  # カスタムバリデート --表示順(sort_num)の値が重なっていた場合、＋1する。--
   def convert_sort_num
+    return true if self.sort_num.blank?
     if Jigyosho.where.not(cd: self.cd).pluck(:sort_num).include?(self.sort_num)
+    # if Jigyosho.where(sort_num >= self.sort_num).pluck(:sort_num).include?(self.sort_num)
       self.sort_num += 1
       convert_sort_num 
     else
       return true
     end
   end
+
+  # (論理削除用) helper method
+  # indexページにある削除を押すとflgを0にするメソッド 
+  def update_flg
+    if flg == 1
+      update(flg: 0)
+    else
+      destroy
+    end
+  end
+
 
   validates :cd,
             presence: true,
